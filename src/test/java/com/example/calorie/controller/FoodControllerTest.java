@@ -17,6 +17,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.example.calorie.dto.FoodDto;
 import com.example.calorie.service.FoodService;
 
+import java.util.UUID;
+
 @WebMvcTest(FoodController.class)
 class FoodControllerTest {
 
@@ -29,7 +31,7 @@ class FoodControllerTest {
 	@Test
 	void createFoodReturnsCreated() throws Exception {
 		FoodResponse saved = new FoodResponse();
-		saved.setId(0x1L);
+		saved.setId(new UUID(0, 1));
 		saved.setName("Moong Dal");
 		when(foodService.create(any(CreateFoodRequest.class))).thenReturn(saved);
 
